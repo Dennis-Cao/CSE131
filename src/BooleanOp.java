@@ -19,15 +19,11 @@ abstract class BooleanOp extends BinaryOp{
     STO checkOperands(STO a, STO b) {
         Type aType = a.getType();
         Type bType = b.getType();
-        if ((aType instanceof NumericType) && (bType  instanceof NumericType)) {
-            // error
-            return new ExprSTO("bool",new BoolType());
-        }
-        else if((aType.isEquivalentTo(new BoolType())) && (bType.isEquivalentTo(new BoolType()))){
+        if((aType.isEquivalentTo(new BoolType())) && (bType.isEquivalentTo(new BoolType()))){
             return new ExprSTO("bool",new BoolType());
         }
         else{
-            return new ErrorSTO("error not equal");
+            return new ErrorSTO("Boolean",aType.toString(),bType.toString(),symbol);
         }
     }
 }

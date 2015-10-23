@@ -469,7 +469,9 @@ class MyParser extends parser
 			else if(result.getName().equals("Comparison"))
 				m_errors.print(Formatter.toString(ErrorMsg.error1n_Expr, result.thisTyp.toString(), result.thisOp));
 			else if(result.getName().equals("Equality"))
-				m_errors.print(Formatter.toString(ErrorMsg.error1b_Expr, result.str1, result.str3, result.str2));			
+				m_errors.print(Formatter.toString(ErrorMsg.error1b_Expr, result.str1, result.str3, result.str2));
+			else if(result.getName().equals("Boolean"))
+				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, result.str1, result.str3, "bool"));			
 		}
 
 		return result;
