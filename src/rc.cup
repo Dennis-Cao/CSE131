@@ -532,7 +532,7 @@ ParamList ::=       ParamDecl:_2
 
 ParamDecl ::=       Type:_3 OptRef T_ID:_2 OptArrayList:_1
                     {:
-                        STO TempSto= new VarSTO(_2,_3);
+                        VarSTO TempSto= new VarSTO(_2,_3);
                         RESULT=TempSto;
                     :}
     ;
