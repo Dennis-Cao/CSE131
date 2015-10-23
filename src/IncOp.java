@@ -12,20 +12,23 @@ public class IncOp extends UnaryOp{
     {
         super("Inc", "++", op);
     }
-    
-    public STO checkOperands(STO a) 
+
+    public STO checkOperands(STO a)
     {
         Type aType = a.getType();
-        //check if a is the same as b
-        if(a.getIsModifiable() == false){
+
+        // error generated if operand is not modifiable
+        if(!(a.getIsModifiable()) ){
             return new ErrorSTO("NotMod",symbol,"throwaway");
         }
-        if ( !(aType.isNumeric()) ) 
+
+        // error generated if operand is not numeric
+        if ( !(aType.isNumeric()) )
         {
             // error
             return new ErrorSTO("IncOp",aType,symbol);
         }
-        else 
+        else
         {
         	Type typ;
         	if(aType instanceof FloatType)
