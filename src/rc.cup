@@ -440,6 +440,9 @@ ReturnType ::=      Type:_1
                         RESULT = _1;
                     :}
     |               T_VOID
+                    {:
+                        RESULT = new VoidType();  // assigned bool type
+                    :}
     ;
 
 

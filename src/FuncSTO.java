@@ -28,6 +28,10 @@ class FuncSTO extends STO
 		setReturnType(typ);
 		setIsModifiable(true);
 		setIsAddressable(true);
+		if(typ instanceof VoidType){
+			setIsModifiable(false);
+			setIsAddressable(false);
+		}
 		// You may want to change the isModifiable and isAddressable                      
 		// fields as necessary
 	}

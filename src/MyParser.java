@@ -245,7 +245,6 @@ class MyParser extends parser
 			m_nNumErrors++;
 			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
 		}
-	
 		FuncSTO sto = new FuncSTO(id);
 		m_symtab.insert(sto);
 
@@ -259,8 +258,9 @@ class MyParser extends parser
 			m_nNumErrors++;
 			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
 		}
-	
+		System.out.println(typ);
 		FuncSTO sto = new FuncSTO(id,typ);
+		System.out.println("IT WORKED: " + sto.getReturnType());
 		m_symtab.insert(sto);
 
 		m_symtab.openScope();
@@ -320,19 +320,22 @@ class MyParser extends parser
 	STO DoAssignExpr(STO stoDes, STO assignedValue)
 	{
 		// System.out.println("Set: " + stoDes.getName() + " to:" + assignedValue.getName());
+		if (!stoDes.isModLValue())
+		{
+				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");
+            	return new ErrorSTO("NotAss");
+		}
 		if(!assignedValue.getType().isAssignableTo(stoDes.getType())){
 			if(assignedValue.getType().isError()){
 				return stoDes;
 			}
 			m_nNumErrors++;
-			System.out.println(stoDes.getName() + " : STODES NAME + insfunc? : " + stoDes.isFunc());
+			if(stoDes.isFunc()){
+				m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),((FuncSTO)stoDes).getReturnType().toString()));
+				return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),((FuncSTO)stoDes).getReturnType().toString());
+			}
 			m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),stoDes.getType().toString()));
 			return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),stoDes.getType().toString());
-		}
-		if (!stoDes.isModLValue())
-		{
-				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");
-            	return new ErrorSTO("NotAss");
 		}
 		
 		return stoDes;
