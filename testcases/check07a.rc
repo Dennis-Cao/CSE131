@@ -1,0 +1,12 @@
+// test case for:
+// Detect an illegal exit statement -- that is, statements of the form 
+// exit(Expr);
+// where Expr is not assignable to an int
+function : void main() {
+	exit(0); // no error
+	int x;
+	exit(x); // no error
+	float y;
+	exit(y); // error
+	exit(false); // error
+}

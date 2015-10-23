@@ -1,0 +1,8 @@
+structdef MYSTRUCT {
+	MYSTRUCT* myRecursivePtr;
+};
+
+structdef MYSTRUCT2 {
+	MYSTRUCT2 myRecursiveStruct;
+};
+

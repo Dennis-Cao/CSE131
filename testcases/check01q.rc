@@ -1,0 +1,9 @@
+
+int i;
+bool b;
+float r;
+
+function : int main() {
+    i = b != r;
+    return 0;
+}

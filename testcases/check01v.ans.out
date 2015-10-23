@@ -1,0 +1,31 @@
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type float to binary operator &, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type float to binary operator &, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator &, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator &, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator &, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type float to binary operator ^, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type float to binary operator ^, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator ^, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator ^, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator ^, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type float to binary operator |, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type float to binary operator |, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator |, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator |, equivalent to int expected.
+Error, "Testframework/project1/phase1/check01v.rc", line 7:
+  Incompatible type bool to binary operator |, equivalent to int expected.
+Compile: failure.

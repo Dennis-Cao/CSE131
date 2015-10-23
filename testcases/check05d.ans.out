@@ -1,0 +1,15 @@
+Error, "project1/phase1/check05d.rc", line 17: 
+  Argument passed to reference parameter x (type int) is not a modifiable L-value.
+Error, "project1/phase1/check05d.rc", line 20: 
+  Argument passed to reference parameter x (type float) is not a modifiable L-value.
+Error, "project1/phase1/check05d.rc", line 23: 
+  Argument passed to reference parameter x (type bool) is not a modifiable L-value.
+Error, "project1/phase1/check05d.rc", line 23: 
+  Argument passed to reference parameter y (type float) is not a modifiable L-value.
+Error, "project1/phase1/check05d.rc", line 24: 
+  Argument passed to reference parameter y (type float) is not a modifiable L-value.
+Error, "project1/phase1/check05d.rc", line 28: 
+  Argument passed to reference parameter y (type bool) is not a modifiable L-value.
+Error, "project1/phase1/check05d.rc", line 28: 
+  Argument passed to reference parameter z (type int) is not a modifiable L-value.
+Compile: failure.

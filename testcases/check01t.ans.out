@@ -1,0 +1,3 @@
+Error, "Testframework/project1/phase1/check01t.rc", line 7:
+  Incompatible type float to binary operator ||, equivalent to bool expected.
+Compile: failure.

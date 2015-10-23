@@ -1,0 +1,5 @@
+Error, "project1/phase1/check04a.rc", line 4: 
+  bool required for conditional test, int found.
+Error, "project1/phase1/check04a.rc", line 8: 
+  bool required for conditional test, int found.
+Compile: failure.

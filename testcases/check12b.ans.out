@@ -1,0 +1,13 @@
+Error, "project1/phase2/check12b.rc", line 4: 
+  Break does not occur in a loop.
+Error, "project1/phase2/check12b.rc", line 5: 
+  Continue does not occur in a loop.
+Error, "project1/phase2/check12b.rc", line 12: 
+  Break does not occur in a loop.
+Error, "project1/phase2/check12b.rc", line 14: 
+  Continue does not occur in a loop.
+Error, "project1/phase2/check12b.rc", line 22: 
+  Break does not occur in a loop.
+Error, "project1/phase2/check12b.rc", line 23: 
+  Continue does not occur in a loop.
+Compile: failure.

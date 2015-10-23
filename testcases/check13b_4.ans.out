@@ -1,0 +1,3 @@
+Error, "Testframework/project1/phase1/check13b_4.rc", line 7:
+  Field myRecursivePtr declared second time in struct.
+Compile: failure.

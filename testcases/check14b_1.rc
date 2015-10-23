@@ -1,0 +1,17 @@
+structdef TX { int i; };
+
+structdef TR {
+    TX *r;
+    int i;
+};
+
+typedef TR* TPTR;
+
+function : int main() {
+    float r;
+    int i;
+    TPTR vtpTR;
+
+    r = vtpTR.r;
+    return 0;
+}

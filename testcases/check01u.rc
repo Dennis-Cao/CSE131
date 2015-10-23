@@ -1,0 +1,8 @@
+bool b;
+int i, j;
+
+function : int main() {
+    j = i = j+i;
+    i =  b = i = 1;
+    return 0;
+}

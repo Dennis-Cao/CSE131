@@ -1,0 +1,7 @@
+Error, "project1/phase2/check08a.rc", line 12: 
+  Initialization value of constant named z not known at compile time.
+Error, "project1/phase2/check08a.rc", line 14: 
+  Initialization value of type float not assignable to constant/variable of type int.
+Error, "project1/phase2/check08a.rc", line 17: 
+  Initialization value of type float not assignable to constant/variable of type int.
+Compile: failure.

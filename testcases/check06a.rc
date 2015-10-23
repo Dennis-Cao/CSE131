@@ -1,0 +1,11 @@
+// test case for:
+// Detect an illegal return statement where no Expr is specified and the return type is not void.
+function : void foo()
+{
+	return; // no error
+}
+
+function : int bar()
+{
+	return; // error
+}

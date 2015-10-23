@@ -1,0 +1,17 @@
+// test case for:
+// Constant folding is required and will be checked. When dealing with constant folding, if an 
+// arithmetic exception occurs (e.g. dividing by zero i.e. 0 or 0.0), the resulting constant value is 
+// irrelevant (since the object will now be an ErrorSTO) and the appropriate constant folding error 
+// message should be displayed. In this case, do not print the first error message listed above 
+// (constant initialization value not know at compile time). Note that you should throw an 
+// arithmetic exception for dividing by a zero float i.e. 0.0, even though in Java, dividing by 0.0 
+// might result in a NaN.
+
+const float f = 1 + 1.0 + 2.5; // no error
+const int j = 1 - 2 - 3; // no error
+const float g = 2.5 * 100; // no error
+const int l = 4 / 3; // no error
+const int m = 4 / 0; // error
+const float a = 1.0 / 0.0000; // error
+const int n = 500 % 3; // no error
+const int o = 0 % 0; // error

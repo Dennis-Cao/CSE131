@@ -1,0 +1,16 @@
+float r;
+int i;
+
+function : int main() {
+				  r = i + i;
+				  i = i + 2;
+				  r = i - r;
+				  r = r * r;
+				  i = i * i;
+				  r = 42 + i;
+				  r = 42 - r;
+				  r = 2.141 * r;
+				  i = i % i;
+				  i = i / i;
+				  return 0;
+} 

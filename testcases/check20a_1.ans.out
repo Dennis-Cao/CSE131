@@ -1,0 +1,5 @@
+Error, "project1/phase2/check20a_1.rc", line 6: 
+  Invalid type cast. Type int[10] to type int is not supported.
+Error, "project1/phase2/check20a_1.rc", line 8: 
+  Invalid type cast. Type funcptr : void (int x) to type int is not supported.
+Compile: failure.

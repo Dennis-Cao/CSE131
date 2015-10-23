@@ -1,0 +1,19 @@
+Error, "project1/phase1/check05c.rc", line 21: 
+  Argument of type float not equivalent to reference parameter x, of type int.
+Error, "project1/phase1/check05c.rc", line 22: 
+  Argument of type bool not equivalent to reference parameter x, of type int.
+Error, "project1/phase1/check05c.rc", line 25: 
+  Argument of type int not equivalent to reference parameter x, of type float.
+Error, "project1/phase1/check05c.rc", line 26: 
+  Argument of type bool not equivalent to reference parameter x, of type float.
+Error, "project1/phase1/check05c.rc", line 30: 
+  Argument of type int not equivalent to reference parameter x, of type bool.
+Error, "project1/phase1/check05c.rc", line 30: 
+  Argument of type bool not equivalent to reference parameter y, of type float.
+Error, "project1/phase1/check05c.rc", line 31: 
+  Argument of type bool not equivalent to reference parameter y, of type float.
+Error, "project1/phase1/check05c.rc", line 36: 
+  Argument of type float not equivalent to reference parameter y, of type bool.
+Error, "project1/phase1/check05c.rc", line 36: 
+  Argument of type float not equivalent to reference parameter z, of type int.
+Compile: failure.

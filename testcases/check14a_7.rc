@@ -1,0 +1,17 @@
+structdef ALPHA {
+	int i;
+function : void funkyDunk() {}
+};
+
+int x;
+
+function : int main ()
+{
+	ALPHA a1, a2;
+	a1.funkyDunk();
+	a1.blah();
+	return 0;
+}
+
+
+

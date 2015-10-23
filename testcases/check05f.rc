@@ -1,0 +1,22 @@
+// test case for:
+// Calls to functions that return by reference 
+// should be marked as modifiable L-values. Calls to functions that are NOT return-by-reference 
+// should be marked as R-values.
+
+
+function : int foo()
+{
+	return 5;
+}
+
+function : int& bar()
+{
+	int x;
+	return x;
+}
+
+function : void main()
+{
+	foo() = 5; // error
+	bar() = 5; // no error
+}

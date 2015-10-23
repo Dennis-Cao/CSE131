@@ -1,0 +1,18 @@
+typedef int CLASS;
+const CLASS Paul = 5;
+const CLASS John = 5;
+const CLASS Ringo = 4;
+const CLASS George = 4;
+
+typedef bool FACT;
+
+const FACT Beatles = (Paul + Ringo) > (John + George);
+FACT Yoko;
+
+function : int main() {
+						 if(Beatles)
+						 {
+							 Yoko = true;
+						 }
+						 return 0;
+					 }

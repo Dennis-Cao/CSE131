@@ -1,0 +1,3 @@
+Error, "project1/phase1/check05f.rc", line 20: 
+  Left-hand operand is not assignable (not a modifiable L-value).
+Compile: failure.

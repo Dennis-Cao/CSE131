@@ -1,0 +1,5 @@
+Error, "project1/phase1/check05e.rc", line 5: 
+  Incompatible type bool to binary operator +, numeric expected.
+Error, "project1/phase1/check05e.rc", line 6: 
+  Value of type void not assignable to variable of type int.
+Compile: failure.

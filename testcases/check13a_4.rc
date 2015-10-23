@@ -1,0 +1,4 @@
+structdef FOO {
+	int a, b;
+	function : void a() {}
+};

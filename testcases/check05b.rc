@@ -1,0 +1,32 @@
+// test cases for:
+// A parameter is declared as pass-by-value (default) and the corresponding argument's 
+// type is not assignable to the parameter type;
+
+function : void a(int x) {}
+function : void b(float x) {}
+function : void c(bool x, float y) {}
+function : float d(float x, bool y, int z) {return x;}
+
+function : void main()
+{
+	a(1); // no error
+	a(1.0); // error
+	a(false); // error
+	
+	b(5.0); // no error
+	b(5); // no error
+	b(false); // error
+	
+	bool boo;
+	float f;
+	c(true, f); // no error
+	c(boo, 5); // no error
+	c(f, boo); // 2 errors
+	c(boo, false); // 1 error for 2nd parameter
+	
+	int i;
+	float x = d(1.0, boo, i); // no error
+	float y;
+	y = d(i, boo, i); // no error
+	int z = d(1.0, i, 5.0); // 2 errors, 2nd and 3rd parameters
+}

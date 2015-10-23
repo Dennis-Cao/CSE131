@@ -1,0 +1,7 @@
+bool b;
+int i;
+
+function : int main() {
+    b = !i;
+    return 0;
+ }

@@ -1,0 +1,3 @@
+Error, "Testframework/project1/phase1/check13b_3.rc", line 7:
+  Size of field myRecursiveStruct cannot be determined at compile time.
+Compile: failure.

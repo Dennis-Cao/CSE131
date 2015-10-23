@@ -1,0 +1,7 @@
+int i;
+bool b;
+
+function : int main() {
+    i = i % b;
+    return 0;
+}

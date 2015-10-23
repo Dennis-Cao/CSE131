@@ -1,0 +1,47 @@
+// test case for:
+// Detect an illegal return statement
+// For functions declared to return by value, an error should be generated if
+//   * the type of return expression is not assignable to the return type of the function. 
+// For functions declared to return by reference, an error should be generated if15
+//   * the type of the return expression is not equivalent to the return type of the function
+//   * the return expression is not a modifiable L-value
+// Note: Return-by-reference will only be tested with non-void and non-array return types.
+
+function : float a()
+{
+	return 1; // no error
+}
+
+function : float c()
+{
+	return true; // error
+}
+
+function : bool b()
+{
+	bool b;
+	return b; // no error
+}
+
+function : int d()
+{
+	float f;
+	return f; // error
+}
+
+function : int& e()
+{
+	int i;
+	return i; // no error
+}
+
+function : float& f()
+{
+	int i;
+	return i; // error
+}
+
+function : bool& g()
+{
+	return true; // error
+}

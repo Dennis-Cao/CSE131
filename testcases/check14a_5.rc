@@ -1,0 +1,15 @@
+structdef ALPHA {
+	int i;
+};
+
+int x;
+
+function : int main ()
+{
+	ALPHA a1, a2;
+	a1.y;
+	return 0;
+}
+
+
+

@@ -1,0 +1,14 @@
+function : int main() {
+
+    int a = 0xDEADBEEF;
+    int b = 0xcafebabe;
+    int c = 0xCaFed00d;
+
+    int d = 010;
+    int e = 035;
+    int f = 077;
+
+    float g = 0.2;
+    float h = 1000.234;
+    float k = 90.12;
+}

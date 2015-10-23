@@ -1,0 +1,8 @@
+function : int main ()
+{
+	int x;
+	int[4] a;
+	int *r = a;
+	int *t = r;
+	return 0;
+}

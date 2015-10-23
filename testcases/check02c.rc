@@ -1,0 +1,11 @@
+int x;
+float y, w;
+
+function : int main() {
+    x++;
+    w = x++ + --y;
+    x = x + ++w + y+++x;
+    w = y-y-- - --x;
+
+    return 0;
+}

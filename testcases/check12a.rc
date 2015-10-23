@@ -1,0 +1,11 @@
+int a;
+int[2] b;
+float[3] c;
+
+function : void main()
+{
+	foreach (float x : a) {} // Error, 'a' is not an array type
+	foreach (bool x : b) {} // Error, int not assignable to bool
+	foreach (float x : b) {} // OK, int assignable to float
+	foreach (float &x : b) {} // Error, int not equivalent to float
+}

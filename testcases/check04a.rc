@@ -1,0 +1,8 @@
+function : void main() {
+	int x;
+	while (x) { } // error
+	while (true) { } // no error
+	bool y;
+	if (y) { } // no error
+	if (x) { } // error
+}

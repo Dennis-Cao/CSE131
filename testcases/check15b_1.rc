@@ -1,0 +1,14 @@
+structdef A {
+	int x;
+};
+
+function : int main ()
+{
+	A* ptr;
+	int y;
+	(*ptr).x = y;
+	ptr->x = y;
+	int* ptr2;
+	*ptr2 = 1;
+	return 0;
+}

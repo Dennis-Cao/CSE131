@@ -1,0 +1,7 @@
+Error, "project1/phase2/check15a_1.rc", line 9: 
+  Incompatible type int to unary dereference operator *, pointer expected.
+Error, "project1/phase2/check15a_1.rc", line 12: 
+  Incompatible type int* to operator ->, pointer to struct expected.
+Error, "project1/phase2/check15a_1.rc", line 13: 
+  Referenced field y not found in type A.
+Compile: failure.

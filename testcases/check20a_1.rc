@@ -1,0 +1,10 @@
+const bool x = true;
+int[10] y;
+int z;
+function : int main() {
+	z = y[(int) x]; // the index into the array will be 1
+	(int) y; // error
+	funcptr : void (int x) fp;
+	(int) fp; // error
+	return 0;
+}

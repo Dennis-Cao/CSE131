@@ -1,0 +1,27 @@
+// argument count tests
+function : void a() {}
+function : void b(int x) {}
+function : void c(bool &x, float y) {}
+function : int d(float x, bool &y, int &z) {return z;}
+
+function : void main()
+{
+	a(); // no error
+	a(1); // error
+	
+	b(5); // no error
+	b(); // error
+	b(1, 2); // error
+	
+	bool boo;
+	c(boo, 2.0); // no error
+	c(boo); // error
+	c(); // error
+	c(boo, 2.0, 1); // error
+	
+	int i;
+	int x = d(1.0, boo, i); // no error
+	int y;
+	y = d(); // error
+	int z = d(1.0, boo, i, 5); // error
+}

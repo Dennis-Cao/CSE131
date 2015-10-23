@@ -1,0 +1,3 @@
+Error, "Testframework/project1/phase1/check14a_1.rc", line 7:
+  redeclared identifier 'a1'.
+Compile: failure.

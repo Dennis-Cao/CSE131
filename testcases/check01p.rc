@@ -1,0 +1,6 @@
+bool b;
+
+function : int main() {
+    b = true != 31;
+    return 0;
+}

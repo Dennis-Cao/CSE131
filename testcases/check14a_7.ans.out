@@ -1,0 +1,3 @@
+Error, "Testframework/project1/phase1/check14a_7.rc", line 7:
+  Referenced field blah not found in type ALPHA.
+Compile: failure.

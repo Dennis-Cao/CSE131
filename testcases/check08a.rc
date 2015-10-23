@@ -1,0 +1,18 @@
+// test case for:
+// Detect an illegal constant/variable initialization
+// const Type c = ConstExpr;
+// Type x = Expr;
+// For this example, an error should be generated if:
+//   * The value of ConstExpr is not known at compile time;
+//   * The type of ConstExpr or Expr is not assignable to Type.
+
+const int x = 1; // no error
+int y;
+const int z = y; // error
+const int a = 1.0; // error
+
+function : void main() {
+	bool b = true; // no error
+	int x = 1.0; // error
+	return;
+}

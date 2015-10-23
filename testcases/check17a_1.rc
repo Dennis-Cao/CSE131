@@ -1,0 +1,28 @@
+function : int main ()
+{
+	int * p1;
+	int * p2;
+	float * p3;
+	int **p4;
+	int x;
+	
+	p1 == p2; // no error
+	p1 == nullptr; // no error
+	nullptr == nullptr; // no error
+	nullptr == p2; // no error
+	p1 == p3; // error, not equivalent types
+	p1 == p4; // error, not equivalent types
+	p1 == 0; // error, not equivalent types
+	p2 == x; // error, not equivalent types
+	
+	p1 != p2; // no error
+	p1 != nullptr; // no error
+	nullptr != nullptr; // no error
+	nullptr != p2; // no error
+	p1 != p3; // error, not equivalent types
+	p1 != p4; // error, not equivalent types
+	p1 != 0; // error, not equivalent types
+	p2 != x; // error, not equivalent types
+	
+	return 0;
+}

@@ -1,0 +1,23 @@
+function : void main()
+{
+	break; // error
+	continue; // error
+	while (true)
+	{
+		break; // no error
+		continue; // no error
+	}
+	
+	break; // error
+	continue; // error
+	
+	int[20] x;
+	foreach (int i : x)
+	{
+		break; // no error
+		continue; // no error
+	}
+	
+	break; // error
+	continue; // error
+}

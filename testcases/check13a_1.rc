@@ -1,0 +1,22 @@
+structdef FOO {
+	int a, b;
+	int c;
+	float d;
+	bool e;
+	float f, g;
+};
+
+structdef FOOBAZ {
+	int a, b;
+	int c;
+	float d;
+	bool e;
+	float f,  g;
+	function : void foo () {}
+	function : int bar(){ int c = 0; return c;}
+};
+
+function : int main() {
+return 0;
+}
+

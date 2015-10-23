@@ -1,0 +1,3 @@
+Error, "Testframework/project1/phase1/check01m.rc", line 7:
+  Incompatible type bool to binary operator >, numeric expected.
+Compile: failure.

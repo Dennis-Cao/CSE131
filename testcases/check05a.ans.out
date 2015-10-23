@@ -1,0 +1,17 @@
+Error, "project1/phase1/check05a.rc", line 10: 
+  Number of arguments (1) differs from number of parameters (0).
+Error, "project1/phase1/check05a.rc", line 13: 
+  Number of arguments (0) differs from number of parameters (1).
+Error, "project1/phase1/check05a.rc", line 14: 
+  Number of arguments (2) differs from number of parameters (1).
+Error, "project1/phase1/check05a.rc", line 18: 
+  Number of arguments (1) differs from number of parameters (2).
+Error, "project1/phase1/check05a.rc", line 19: 
+  Number of arguments (0) differs from number of parameters (2).
+Error, "project1/phase1/check05a.rc", line 20: 
+  Number of arguments (3) differs from number of parameters (2).
+Error, "project1/phase1/check05a.rc", line 25: 
+  Number of arguments (0) differs from number of parameters (3).
+Error, "project1/phase1/check05a.rc", line 26: 
+  Number of arguments (4) differs from number of parameters (3).
+Compile: failure.

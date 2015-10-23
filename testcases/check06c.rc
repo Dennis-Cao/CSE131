@@ -1,0 +1,29 @@
+// test case for:
+// Detect a missing return statement. 
+// For functions not declared with void return type, at least one return statement (legal or illegal) 
+// must appear at the top level (i.e. not within an if, while, or foreach statement).
+
+function : int a()
+{
+	return 1;
+}
+// no error
+
+function : int b()
+{
+}
+// error
+
+function : int c()
+{
+	if (true)
+	{
+		return 0;
+	}
+}
+// error
+
+function : void d()
+{
+}
+// no error

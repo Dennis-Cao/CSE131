@@ -1,0 +1,27 @@
+typedef float[10] ARR;
+typedef int BOO;
+
+function : void main()
+{
+	int[10] xs;
+	xs[5]; // no error
+	
+	int i;
+	i[5]; // error
+	
+	ARR[10] arrs;
+	arrs[5]; // no error
+	arrs[5][3]; // no error
+	
+	xs[5][3]; // error
+	
+	xs[3.0]; // error
+	
+	BOO j;
+	xs[j]; // no error
+	
+	xs[5-10]; // error
+	const int c = 3;
+	xs[c + 2 - 1]; //no error
+	xs[4*c]; // error
+}

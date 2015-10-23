@@ -1,0 +1,11 @@
+structdef ALPHA {
+	int a;
+};
+
+function : int main ()
+{
+	ALPHA a1, a2;
+	return 0;
+}
+
+

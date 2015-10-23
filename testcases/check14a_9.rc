@@ -1,0 +1,7 @@
+float r;
+float[10] ar;
+
+function : int main() {
+    r = ar.r;
+    return 0;
+}

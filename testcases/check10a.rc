@@ -1,0 +1,16 @@
+int[10] nothing; // no error
+int[0] more; // error
+bool[2.0] than; // error
+const int strangers = 5;
+float[strangers] passing; // no error
+int by = 4;
+int[by] out; // error
+typedef	int ON;
+const ON the = 2;
+bool[the] street; // no error
+
+// no errors for this stuff:
+typedef float[10] MEMORIES;
+float[10] are;
+MEMORIES fading;
+MEMORIES[2] though; // array of array

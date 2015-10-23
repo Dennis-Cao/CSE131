@@ -1,0 +1,37 @@
+// test cases for:
+// A parameter is declared as pass-by-reference (using the &) and the corresponding 
+// argument's type is not equivalent to the parameter type;
+
+function : void a(int &x) {}
+function : void b(float &x) {}
+function : void c(bool &x, float &y) {}
+function : float d(float &x, bool &y, int &z) {return x;}
+
+int y;
+float z;
+bool x;
+
+function : void main()
+{
+	int x;
+	float y;
+	bool z;
+	
+	a(x); // no error
+	a(y); // error
+	a(z); // error
+	
+	b(::z); // no error
+	b(::y); // error
+	b(::x); // error
+	
+	c(z, y); // no error
+	c(::x, y); // no error
+	c(x, z); // 2 errors
+	c(z, z); // 1 error for 2nd parameter
+	
+	float f = d(y, z, x); // no error
+	float g;
+	g = d(y, ::x, x); // no error
+	int i = d(y, y, y); // 2 errors, 2nd and 3rd parameters
+}

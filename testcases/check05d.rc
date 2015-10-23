@@ -1,0 +1,29 @@
+// test cases for:
+// A parameter is declared as pass-by-reference and the corresponding argument is not a 
+// modifiable L-value.
+		
+function : void a(int &x) {}
+function : void b(float &x) {}
+function : void c(bool &x, float &y) {}
+function : float d(float &x, bool &y, int &z) {return x;}
+
+function : void main()
+{
+	int x;
+	float y;
+	bool z;
+	
+	a(x); // no error
+	a(5); // error
+	
+	b(y); // no error
+	b(1.0); // error
+	
+	c(z, y); // no error
+	c(true, -1.0); // 2 errors
+	c(z, 1.0); // 1 error for 2nd parameter
+	
+	float f = d(y, z, x); // no error
+	int i;
+	i = d(y, true, 1); // 2 errors, 2nd and 3rd parameters
+}

@@ -1,0 +1,15 @@
+structdef A {
+	int x;
+};
+
+function : int main ()
+{
+	A* x;
+	int y = (*x).x; // no error
+	(*y).x; // error, not a pointer type
+	int z = x->x; // no error
+	int *a;
+	int b = a->x; // error, not a pointer to struct
+	int c = x->y; // error, missing field 
+	return 0;
+}

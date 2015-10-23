@@ -1,0 +1,7 @@
+Error, "project1/phase2/check08b.rc", line 14: 
+  Arithmetic exception occurred during constant folding.
+Error, "project1/phase2/check08b.rc", line 15: 
+  Arithmetic exception occurred during constant folding.
+Error, "project1/phase2/check08b.rc", line 17: 
+  Arithmetic exception occurred during constant folding.
+Compile: failure.

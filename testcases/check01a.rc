@@ -1,0 +1,8 @@
+bool x;
+int y;
+function : void main() {
+  int x;
+  bool y;
+  x + x;   // If Phase 0 not done, should complain that type 'bool' cannot be used with '+'. If Phase 0 correctly implemented, no error should occur.
+  y + y;  // If Phase 0 not done, no error should occur. If Phase 0 correctly implemented, should complain that type 'bool' cannot be used with '+'.
+}

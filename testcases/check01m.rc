@@ -1,0 +1,9 @@
+
+bool b;
+int i;
+
+function : int main() {
+	 b = i > b; //should fail. both must be numeric.
+	 return 0; 
+}
+

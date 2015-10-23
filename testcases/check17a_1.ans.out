@@ -1,0 +1,41 @@
+Error, "project1/phase2/check17a_1.rc", line 13: 
+  Incompatible types to operator ==:
+    int*,
+    float*;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 14: 
+  Incompatible types to operator ==:
+    int*,
+    int**;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 15: 
+  Incompatible types to operator ==:
+    int*,
+    int;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 16: 
+  Incompatible types to operator ==:
+    int*,
+    int;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 22: 
+  Incompatible types to operator !=:
+    int*,
+    float*;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 23: 
+  Incompatible types to operator !=:
+    int*,
+    int**;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 24: 
+  Incompatible types to operator !=:
+    int*,
+    int;
+  both must be of equivalent pointer type.
+Error, "project1/phase2/check17a_1.rc", line 25: 
+  Incompatible types to operator !=:
+    int*,
+    int;
+  both must be of equivalent pointer type.
+Compile: failure.

@@ -1,0 +1,17 @@
+Error, "project1/phase1/check05b.rc", line 13: 
+  Argument of type float not assignable to value parameter x, of type int.
+Error, "project1/phase1/check05b.rc", line 14: 
+  Argument of type bool not assignable to value parameter x, of type int.
+Error, "project1/phase1/check05b.rc", line 18: 
+  Argument of type bool not assignable to value parameter x, of type float.
+Error, "project1/phase1/check05b.rc", line 24: 
+  Argument of type float not assignable to value parameter x, of type bool.
+Error, "project1/phase1/check05b.rc", line 24: 
+  Argument of type bool not assignable to value parameter y, of type float.
+Error, "project1/phase1/check05b.rc", line 25: 
+  Argument of type bool not assignable to value parameter y, of type float.
+Error, "project1/phase1/check05b.rc", line 31: 
+  Argument of type int not assignable to value parameter y, of type bool.
+Error, "project1/phase1/check05b.rc", line 31: 
+  Argument of type float not assignable to value parameter z, of type int.
+Compile: failure.

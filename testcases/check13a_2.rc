@@ -1,0 +1,5 @@
+structdef FOO {
+	int a, b;
+	int a;
+};
+

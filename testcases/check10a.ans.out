@@ -1,0 +1,7 @@
+Error, "project1/phase2/check10a.rc", line 3: 
+  Index expression value (0) in array declaration must be > 0.
+Error, "project1/phase2/check10a.rc", line 4: 
+  Index expression type (float) in array declaration not equivalent to int.
+Error, "project1/phase2/check10a.rc", line 8: 
+  Value of index expression not known at compile time.
+Compile: failure.
