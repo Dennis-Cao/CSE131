@@ -25,6 +25,8 @@ class ConstSTO extends STO
 	{
 		super(strName);
 		m_value = null; // fix this
+		setIsModifiable(false);
+		setIsAddressable(false);
 		// You may want to change the isModifiable and isAddressable
 		// fields as necessary
 	}
@@ -33,6 +35,8 @@ class ConstSTO extends STO
 	{
 		super(strName, typ);
 		m_value = null; // fix this
+		setIsModifiable(false);
+		setIsAddressable(false);
 		// You may want to change the isModifiable and isAddressable
 		// fields as necessary
 	}
@@ -41,6 +45,8 @@ class ConstSTO extends STO
 	{
 		super(strName, typ);
 		m_value = new BigDecimal(val);
+		setIsModifiable(false);
+		setIsAddressable(false);
 		// You may want to change the isModifiable and isAddressable
 		// fields as necessary
 	}
@@ -49,6 +55,8 @@ class ConstSTO extends STO
 	{
 		super(strName, typ);
 		m_value = new BigDecimal(val);
+		setIsModifiable(false);
+		setIsAddressable(false);
 		// You may want to change the isModifiable and isAddressable
 		// fields as necessary
 	}

@@ -17,6 +17,9 @@ public class IncOp extends UnaryOp{
     {
         Type aType = a.getType();
         //check if a is the same as b
+        if(a.getIsModifiable() == false){
+            return new ErrorSTO("NotMod",symbol,"throwaway");
+        }
         if ( !(aType.isNumeric()) ) 
         {
             // error

@@ -316,7 +316,8 @@ class MyParser extends parser
 		}
 		if (!stoDes.isModLValue())
 		{
-			// Good place to do the assign checks
+				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");
+            	return new ErrorSTO("NotAss");
 		}
 		
 		return stoDes;
@@ -474,6 +475,8 @@ class MyParser extends parser
 				m_errors.print(Formatter.toString(ErrorMsg.error1w_Expr, result.str1, result.str3, "bool"));
 			else if(result.getName().equals("Bitwise"))
 				m_errors.print(Formatter.toString(ErrorMsg.error1w_Expr, result.thisTyp.toString(), result.thisOp,"int"));
+			else if(result.getName().equals("NotAss"))
+				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");
 			else{
 				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, "fuckl u", "rofl", "bool") + result.getName());
 			}			
@@ -503,6 +506,7 @@ class MyParser extends parser
 			m_nNumErrors++;
 			if(result.getName().equals("Not"))
 				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, result.str1,"!","bool"));
+
 			// m_errors.print(Formatter.toString(ErrorMsg.not_type, result.getName()));
 		}
 
@@ -531,9 +535,12 @@ class MyParser extends parser
 			m_nNumErrors++;
 			if(result.getName().equals("IncOp"))
 				m_errors.print(Formatter.toString(ErrorMsg.error2_Type, result.thisTyp.toString(),result.thisOp));
+			if(result.getName().equals("NotMod"))
+				m_errors.print(Formatter.toString(ErrorMsg.error2_Lval, result.str1));
 			// m_errors.print(Formatter.toString(ErrorMsg.not_type, result.getName()));
 		}
-
+		result.setIsModifiable(false);
+		result.setIsAddressable(false);
 		return result;
 	}
 
