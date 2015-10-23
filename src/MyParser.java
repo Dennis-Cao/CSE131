@@ -486,10 +486,6 @@ class MyParser extends parser
 		STO result;
 		UnaryOp operator;
 		switch (op){
-			case "++": operator= new IncOp("Inc","++",a);
-				break;
-			case "--": operator= new DecOp("Dec","--",a);
-				break;
 			case "!": operator= new NotOp("Not","!",a);
 				break;
 			default: operator= null;
@@ -512,6 +508,35 @@ class MyParser extends parser
 
 		return result;
 	}
+	STO doIncOp(STO a, String op,boolean time){
+		STO result;
+		UnaryOp operator;
+		switch (op){
+			case "++": operator= new IncOp("Inc","++",a,time);
+				break;
+			case "--": operator= new DecOp("Dec","--",a,time);
+				break;
+			default: operator= null;
+		}
+
+		if(operator!=null){
+			result=operator.checkOperands(a);
+		}
+		else {
+			result=new ErrorSTO("error");
+		}
+
+		//if error and error print message
+		if(result.isError()){
+			m_nNumErrors++;
+			if(result.getName().equals("IncOp"))
+				m_errors.print(Formatter.toString(ErrorMsg.error2_Type, result.thisTyp.toString(),result.thisOp));
+			// m_errors.print(Formatter.toString(ErrorMsg.not_type, result.getName()));
+		}
+
+		return result;
+	}
+
 
 
 

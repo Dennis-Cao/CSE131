@@ -1,9 +1,11 @@
 // Oodrye
 
 public class IncOp extends UnaryOp{
-    public IncOp(String name, String symbol, STO op)
+    boolean time;
+    public IncOp(String name, String symbol, STO op, boolean time)
     {
         super(name, symbol, op);
+        this.time=time;
     }
 
     public IncOp(STO op)
@@ -18,7 +20,7 @@ public class IncOp extends UnaryOp{
         if ( !(aType.isNumeric()) ) 
         {
             // error
-            return new ErrorSTO("Wrong Arithmetic Type");
+            return new ErrorSTO("IncOp",aType,symbol);
         }
         else 
         {

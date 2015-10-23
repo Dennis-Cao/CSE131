@@ -837,11 +837,10 @@ Designator ::=      T_STAR Designator:_1
                     {:
                         RESULT = _2;
                     :}
-    |               IncDecOp Designator:_2
+    |               IncDecOp:_1 Designator:_2
                     {:
-                        //System.out.print("IncDec");
-                        //System.out.println(_2);
-                        RESULT = _2;
+
+                        RESULT = ((MyParser) parser).doIncOp(_2,_1,false);
                     :}
     |               Designator2:_1 
                     {:
@@ -862,9 +861,9 @@ Designator2 ::=     Designator2:_1 T_DOT T_ID:_3
                     {:
                         RESULT = _1;
                     :}
-    |               Designator2:_1 IncDecOp
+    |               Designator2:_1 IncDecOp:_2
                     {:
-                        RESULT = _1;
+                        RESULT = ((MyParser) parser).doIncOp(_1,_2,true);
                     :}
     |               Designator2:_1 T_LPAREN OptExprList T_RPAREN
                     {:

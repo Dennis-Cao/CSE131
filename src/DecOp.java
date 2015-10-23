@@ -1,9 +1,11 @@
 // Oodrye
 
 public class DecOp extends UnaryOp{
-    public DecOp(String name, String symbol, STO op)
+    boolean time;
+    public DecOp(String name, String symbol, STO op,boolean time)
     {
         super(name, symbol, op);
+        this.time=time;
     }
 
     public DecOp(STO op)
@@ -18,7 +20,7 @@ public class DecOp extends UnaryOp{
         if ( !(aType.isNumeric()) ) 
         {
             // error
-            return new ErrorSTO("Wrong Arithmetic Type");
+            return new ErrorSTO("IncOp",aType,symbol);
         }
         else 
         {
