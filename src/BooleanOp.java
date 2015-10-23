@@ -19,7 +19,6 @@ abstract class BooleanOp extends BinaryOp{
     STO checkOperands(STO a, STO b) {
         Type aType = a.getType();
         Type bType = b.getType();
-        System.out.println(aType.toString() + ":::::" + bType.toString());
         if((aType.isEquivalentTo(new BoolType())) && (bType.isEquivalentTo(new BoolType()))) {
             return new ExprSTO("bool",new BoolType());
         }

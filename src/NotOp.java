@@ -14,11 +14,9 @@ public class NotOp extends UnaryOp{
     public STO checkOperands(STO a) 
     {
         Type aType = a.getType();
-        //check if a is the same as b
         if ( !(aType.isBool()) ) 
         {
-            // error
-            return new ErrorSTO("Wrong Arithmetic Type");
+            return new ErrorSTO("Not",aType.toString(),"!");
         }
         else 
         {

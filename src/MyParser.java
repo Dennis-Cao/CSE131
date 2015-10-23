@@ -503,7 +503,9 @@ class MyParser extends parser
 		//if error and error print message
 		if(result.isError()){
 			m_nNumErrors++;
-			m_errors.print(Formatter.toString(ErrorMsg.not_type, result.getName()));
+			if(result.getName().equals("Not"))
+				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, result.str1,"!","bool"));
+			// m_errors.print(Formatter.toString(ErrorMsg.not_type, result.getName()));
 		}
 
 		return result;
