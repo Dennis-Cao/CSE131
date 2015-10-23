@@ -471,9 +471,11 @@ class MyParser extends parser
 			else if(result.getName().equals("Equality"))
 				m_errors.print(Formatter.toString(ErrorMsg.error1b_Expr, result.str1, result.str3, result.str2));
 			else if(result.getName().equals("Boolean"))
-				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, result.str1, result.str3, "bool"));
+				m_errors.print(Formatter.toString(ErrorMsg.error1w_Expr, result.str1, result.str3, "bool"));
+			else if(result.getName().equals("Bitwise"))
+				m_errors.print(Formatter.toString(ErrorMsg.error1w_Expr, result.thisTyp.toString(), result.thisOp,"int"));
 			else{
-				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, "fuckl u", "rofl", "bool"));
+				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, "fuckl u", "rofl", "bool") + result.getName());
 			}			
 		}
 

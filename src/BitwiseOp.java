@@ -18,9 +18,11 @@ abstract class BitwiseOp extends BinaryOp{
     STO checkOperands(STO a, STO b) {
         Type aType = a.getType();
         Type bType = b.getType();
-        if (!(aType.isEquivalentTo(new IntType())) || !(bType.isAssignableTo(new IntType()))) {
-            // error
-            return new ErrorSTO("Error Bitwise");
+        if (!(aType instanceof IntType)) {
+            return new ErrorSTO("Bitwise",aType, symbol);
+        }
+        else if (!(bType instanceof IntType)){
+            return new ErrorSTO("Bitwise",bType, symbol);
         }
         else{
             return new ExprSTO("Int",new IntType());

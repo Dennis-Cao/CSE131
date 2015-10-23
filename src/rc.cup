@@ -663,7 +663,7 @@ Expr1 ::=           Expr1:_1 T_AND:_2 Expr2:_3
 
 Expr2 ::=           Expr2:_1 T_BAR:_2 Expr3:_3
                     {:
-                        RESULT = ((MyParser) parser).doBinaryOp (_1,_2.toString(),_3);
+                        RESULT = ((MyParser) parser).doBinaryOp (_1,"|",_3);
                     :}
     |               Expr3:_1
                     {:
