@@ -252,6 +252,20 @@ class MyParser extends parser
 		m_symtab.openScope();
 		m_symtab.setFunc(sto);
 	}
+	void DoFuncDecl_1(String id,Type typ)
+	{
+		if (m_symtab.accessLocal(id) != null)
+		{
+			m_nNumErrors++;
+			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
+		}
+	
+		FuncSTO sto = new FuncSTO(id,typ);
+		m_symtab.insert(sto);
+
+		m_symtab.openScope();
+		m_symtab.setFunc(sto);
+	}
 
 	//----------------------------------------------------------------
 	//
@@ -311,6 +325,7 @@ class MyParser extends parser
 				return stoDes;
 			}
 			m_nNumErrors++;
+			System.out.println(stoDes.getName() + " : STODES NAME + insfunc? : " + stoDes.isFunc());
 			m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),stoDes.getType().toString()));
 			return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),stoDes.getType().toString());
 		}

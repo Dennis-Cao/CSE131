@@ -357,7 +357,7 @@ FieldFuncDecl ::=   FuncDef
 FuncDef ::=         T_FUNCTION T_COLON ReturnType:_1 OptRef:_2 T_ID:_3
                     {:
                         ((MyParser) parser).SaveLineNum ();
-                        ((MyParser) parser).DoFuncDecl_1(_3);
+                        ((MyParser) parser).DoFuncDecl_1(_3,_1);
                     :}
                     T_LPAREN OptParamList:_4 T_RPAREN
                     {:
