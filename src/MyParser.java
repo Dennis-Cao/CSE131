@@ -190,6 +190,18 @@ class MyParser extends parser
 		VarSTO sto = new VarSTO(id, typ);
 		m_symtab.insert(sto);
 	}
+	void DoVarDecl(Type typ, Vector<String> v)
+	{
+		for(String id:v){
+			if (m_symtab.accessLocal(id) != null)
+			{
+				m_nNumErrors++;
+				m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
+			}
+			VarSTO sto = new VarSTO(id, typ);
+			m_symtab.insert(sto);
+		}
+	}
 	//----------------------------------------------------------------
 	//
 	//----------------------------------------------------------------
@@ -264,6 +276,19 @@ class MyParser extends parser
 		m_symtab.openScope();
 		m_symtab.setFunc(sto);
 	}
+	void DoFuncDecl_1(String id,STO ret)
+	{
+		if (m_symtab.accessLocal(id) != null)
+		{
+			m_nNumErrors++;
+			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
+		}
+		FuncSTO sto = new FuncSTO(id,ret.getType());
+		m_symtab.insert(sto);
+
+		m_symtab.openScope();
+		m_symtab.setFunc(sto);
+	}
 
 	//----------------------------------------------------------------
 	//
@@ -279,6 +304,7 @@ class MyParser extends parser
 	//----------------------------------------------------------------
 	void DoFormalParams(Vector<STO> params)
 	{
+
 		if (m_symtab.getFunc() == null)
 		{
 			m_nNumErrors++;
@@ -288,6 +314,7 @@ class MyParser extends parser
 		// insert parameters here
 		FuncSTO paramList = m_symtab.getFunc();
 		if(params != null){
+			System.out.println(params.size());
 			for(int i=0; i<params.size();i++){
 				STO p=params.get(i);
 				paramList.addParameter(p);
@@ -337,13 +364,29 @@ class MyParser extends parser
 	//----------------------------------------------------------------
 	STO DoAssignExpr(STO stoDes, STO assignedValue)
 	{
-		// System.out.println("Set: " + stoDes.getName() + " to:" + assignedValue.getName());
+		System.out.println("Set: " + stoDes.getName() + " to:" + assignedValue.getName());
 		if (!stoDes.isModLValue())
 		{
 				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");
             	return new ErrorSTO("NotAss");
 		}
-		if(!assignedValue.getType().isAssignableTo(stoDes.getType())){
+		if(((FuncSTO)assignedValue).isFunc())
+		{
+			if(!((FuncSTO)assignedValue).getReturnType().isAssignableTo(stoDes.getType()))
+			{
+				if(((FuncSTO)assignedValue).getReturnType().isError()){
+					return stoDes;
+				}
+				m_nNumErrors++;
+				if(stoDes.isFunc()){
+					m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),((FuncSTO)stoDes).getReturnType().toString()));
+					return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),((FuncSTO)stoDes).getReturnType().toString());
+				}
+				m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),stoDes.getType().toString()));
+				return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),stoDes.getType().toString());
+			}
+		}
+		else if(!assignedValue.getType().isAssignableTo(stoDes.getType())){
 			if(assignedValue.getType().isError()){
 				return stoDes;
 			}
@@ -364,6 +407,7 @@ class MyParser extends parser
 	//----------------------------------------------------------------
 	STO DoFuncCall(STO sto)
 	{
+		System.out.println(sto.getName());
 		if (!sto.isFunc())
 		{
 			m_nNumErrors++;
@@ -373,7 +417,34 @@ class MyParser extends parser
 
 		return sto;
 	}
+	STO DoFuncCall(STO sto, Vector<STO> vec)
+	{
+		Vector<STO> funcParams = ((FuncSTO)sto).getParameter();
+		if(vec == null){
+			if(funcParams.size() !=0){
+				m_nNumErrors++;
+				m_errors.print(Formatter.toString(ErrorMsg.error5n_Call, "0",funcParams.size()));
+				return new ErrorSTO(sto.getName());
+			}
+		}
 
+		if(vec != null)
+		{
+			if(vec.size() != funcParams.size()){
+				m_nNumErrors++;
+				m_errors.print(Formatter.toString(ErrorMsg.error5n_Call, vec.size(),funcParams.size()));
+				return new ErrorSTO(sto.getName());
+			}
+		}
+		if (!sto.isFunc())
+		{
+			m_nNumErrors++;
+			m_errors.print(Formatter.toString(ErrorMsg.not_function, sto.getName()));
+			return new ErrorSTO(sto.getName());
+		}
+
+		return sto;
+	}
 	//----------------------------------------------------------------
 	//
 	//----------------------------------------------------------------
@@ -400,13 +471,16 @@ class MyParser extends parser
 	STO DoDesignator3_ID(String strID)
 	{
 		//p1c0
-		STO sto;
+		STO sto = m_symtab.accessGlobal(strID);
 
-		if ((sto = m_symtab.accessGlobal(strID)) == null)
+		if ((sto) == null)
 		{
 			m_nNumErrors++;
 		 	m_errors.print(Formatter.toString(ErrorMsg.undeclared_id, strID));
 			sto = new ErrorSTO(strID);
+		}
+		else{
+			System.out.println("HELLO");
 		}
 
 		return sto;
@@ -414,9 +488,9 @@ class MyParser extends parser
 	STO DoDesignator3_ID2(String strID)
 	{
 		//p1c0
-		STO sto;
+		STO sto = m_symtab.access(strID);
 
-		if ((sto = m_symtab.access(strID)) == null)
+		if (sto == null)
 		{
 			m_nNumErrors++;
 		 	m_errors.print(Formatter.toString(ErrorMsg.undeclared_id, strID));

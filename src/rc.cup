@@ -124,7 +124,6 @@ non terminal
     StmtList,
     Stmt,
     CodeBlock,
-    OptExprList,
     IfStmt,
     OptElse,
     ForeachStmt,
@@ -138,7 +137,6 @@ non terminal
     WritePairList,
     WritePair,
     ConstExpr,
-    ExprList,
     UnarySign,
     Equality,
     Relation,
@@ -189,6 +187,8 @@ non terminal Type
 
 non terminal Vector
     OptParamList,
+    OptExprList,
+    ExprList,
     ParamList
     ;
 
@@ -373,7 +373,7 @@ FuncDef ::=         T_FUNCTION T_COLON ReturnType:_1 OptRef:_2 T_ID:_3
 
 FuncDecl ::=        T_EXTERN T_FUNCTION T_COLON ReturnType:_1 T_ID:_3
                     {:
-                        ((MyParser) parser).DoFuncDecl_1(_3);
+                        ((MyParser) parser).DoFuncDecl_1(_3,_1);
                     :}
                     T_LPAREN OptParamList:_4 T_RPAREN
                     {:
@@ -532,8 +532,8 @@ ParamList ::=       ParamDecl:_2
 
 ParamDecl ::=       Type:_3 OptRef T_ID:_2 OptArrayList:_1
                     {:
-                        VarSTO TempSto= new VarSTO(_2,_3);
-                        RESULT=TempSto;
+                        ((MyParser) parser).DoVarDecl(_2,_3);
+                        RESULT = ((MyParser) parser).DoDesignator3_ID2(_2);
                     :}
     ;
 
@@ -553,7 +553,9 @@ OptCtorCall ::=     CtorCall
     ;
 
 
-CtorCall ::=        T_COLON T_LPAREN OptExprList T_RPAREN
+CtorCall ::=        T_COLON T_LPAREN OptExprList:_4 T_RPAREN
+                    {:
+                    :}
     ;
 
 
@@ -627,13 +629,27 @@ ConstExpr ::=       Expr
     ;
 
 
-OptExprList ::=     ExprList
+OptExprList ::=     ExprList:_1
+                    {:
+                        System.out.println("OPT EXPR LIST NON EMPTY");
+                        RESULT = _1;
+                    :}
     |               /* empty */
+                    {:
+                        System.out.println("OPT EXPR LIST -- EMPTY");
+                    :}
     ;
 
-
-ExprList ::=        Expr
-    |               ExprList T_COMMA Expr
+ExprList ::=        Expr:_2
+                    {:
+                        RESULT = new Vector ();
+                        RESULT.addElement (_2);
+                    :}
+    |               ExprList:_1 T_COMMA Expr:_2
+                    {:
+                        RESULT = _1;
+                        RESULT.addElement (_2);
+                    :}
     ;
 
 
@@ -650,6 +666,7 @@ Expr ::=            Designator:_1 T_ASSIGN Expr:_3
 
 Expr0 ::=           Expr0:_1 T_OR:_2 Expr1:_3
                     {:
+                        System.out.println("or");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"||",_3);
                     :}
     |               Expr1:_1
@@ -661,6 +678,7 @@ Expr0 ::=           Expr0:_1 T_OR:_2 Expr1:_3
 
 Expr1 ::=           Expr1:_1 T_AND:_2 Expr2:_3
                     {:
+                        System.out.println("and");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"&&",_3);
                     :}
     |               Expr2:_1
@@ -672,6 +690,7 @@ Expr1 ::=           Expr1:_1 T_AND:_2 Expr2:_3
 
 Expr2 ::=           Expr2:_1 T_BAR:_2 Expr3:_3
                     {:
+                        System.out.println("bar");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"|",_3);
                     :}
     |               Expr3:_1
@@ -683,6 +702,7 @@ Expr2 ::=           Expr2:_1 T_BAR:_2 Expr3:_3
 
 Expr3 ::=           Expr3:_1 T_CARET:_2 Expr4:_3
                     {:
+                        System.out.println("caret");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"^",_3);
                     :}
     |               Expr4:_1
@@ -707,6 +727,7 @@ Expr4 ::=           Expr4:_1 T_AMPERSAND:_2 Expr5:_3
 
 Expr5 ::=           Expr5:_1 Equality:_2 Expr6:_3
                     {:
+                        System.out.println("equality");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2.toString(),_3);
                     :}
     |               Expr6:_1
@@ -718,6 +739,7 @@ Expr5 ::=           Expr5:_1 Equality:_2 Expr6:_3
 
 Expr6 ::=           Expr6:_1 Relation:_2 Expr7:_3
                     {:
+                        System.out.println("relation");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2.toString(),_3);
                     :}
     |               Expr7:_1
@@ -742,6 +764,7 @@ Expr7 ::=           Expr7:_1 AddOp:_2 Expr8:_3
 
 Expr8 ::=           Expr8:_1 MulOp:_2 Designator:_3
                     {:
+                        System.out.println("mul");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2,_3);
                     :}
     |               Designator:_1
@@ -874,9 +897,9 @@ Designator2 ::=     Designator2:_1 T_DOT T_ID:_3
                     {:
                         RESULT = ((MyParser) parser).doIncOp(_1,_2,true);
                     :}
-    |               Designator2:_1 T_LPAREN OptExprList T_RPAREN
+    |               Designator2:_1 T_LPAREN OptExprList:_4 T_RPAREN
                     {:
-                        ((MyParser) parser).DoFuncCall (_1);
+                        ((MyParser) parser).DoFuncCall (_1,_4);
                         RESULT = _1;
                     :}
     |               Designator3:_1
