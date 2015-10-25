@@ -310,7 +310,6 @@ class MyParser extends parser
 		// insert parameters here
 		FuncSTO paramList = m_symtab.getFunc();
 		if(params != null){
-			System.out.println(params.size());
 			for(int i=0; i<params.size();i++){
 				STO p=params.get(i);
 				paramList.addParameter(p);
@@ -405,7 +404,6 @@ class MyParser extends parser
 	//----------------------------------------------------------------
 	STO DoFuncCall(STO sto)
 	{
-		System.out.println(sto.getName());
 		if (!sto.isFunc())
 		{
 			m_nNumErrors++;
@@ -667,7 +665,18 @@ class MyParser extends parser
 		result.setIsAddressable(false);
 		return result;
 	}
-
+	void checkExit(STO checkSTMT)
+	{
+		Type typeToCheck;
+		if(checkSTMT.isFunc())
+			typeToCheck=((FuncSTO)checkSTMT).getReturnType();
+		else
+			typeToCheck=checkSTMT.getType();
+		if(!typeToCheck.isAssignableTo(new IntType())){
+			m_nNumErrors++;
+			m_errors.print(Formatter.toString(ErrorMsg.error7_Exit, typeToCheck.toString()));
+		}
+	}
 
 
 
