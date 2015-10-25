@@ -623,10 +623,15 @@ OptExprList ::=     ExprList
     ;
 
 
-ExprList ::=        Expr
-    |               ExprList T_COMMA Expr
+ExprList ::=        Expr:_2
+    |               ExprList:_1 T_COMMA Expr:_2
+                    {:
+                        RESULT = _1;
+                        RESULT.addElement(_2);
+                    :}
     ;
-
+	
+	
 
 Expr ::=            Designator:_1 T_ASSIGN Expr:_3
                     {:
