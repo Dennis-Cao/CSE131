@@ -258,9 +258,7 @@ class MyParser extends parser
 			m_nNumErrors++;
 			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
 		}
-		System.out.println(typ);
 		FuncSTO sto = new FuncSTO(id,typ);
-		System.out.println("IT WORKED: " + sto.getReturnType());
 		m_symtab.insert(sto);
 
 		m_symtab.openScope();
@@ -312,6 +310,26 @@ class MyParser extends parser
 	void DoBlockClose()
 	{
 		m_symtab.closeScope();
+	}
+	//----------------------------------------------------------------
+	//
+	//----------------------------------------------------------------
+	STO DoLoop(STO conditional){
+		STO result;
+		LoopOp operator = new LoopOp(conditional);
+		result=operator.checkOperands(conditional);
+		if(result.isError()){
+			m_nNumErrors++;
+			if(result.getName().equals("Loop"))
+				m_errors.print(Formatter.toString(ErrorMsg.error4_Test, result.thisTyp.toString()));
+			else{
+				m_errors.print(Formatter.toString(ErrorMsg.error1u_Expr, "fuckl u", "rofl", "bool") + result.getName());
+			}			
+		}
+			return result;
+		
+
+
 	}
 
 	//----------------------------------------------------------------
