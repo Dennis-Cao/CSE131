@@ -435,6 +435,11 @@ class MyParser extends parser
 				m_errors.print(Formatter.toString(ErrorMsg.error5n_Call, vec.size(),funcParams.size()));
 				return new ErrorSTO(sto.getName());
 			}
+			for(int i = 0; i < vec.size();i++){
+				if(!vec.get(i).getType().isAssignableTo(funcParams.get(i).getType())){
+					m_errors.print(Formatter.toString(ErrorMsg.error5a_Call, vec.get(i).getType().toString(),funcParams.get(i).getName(),funcParams.get(i).getType().toString()));
+				}
+			}
 		}
 		if (!sto.isFunc())
 		{

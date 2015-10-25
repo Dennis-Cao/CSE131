@@ -631,12 +631,10 @@ ConstExpr ::=       Expr
 
 OptExprList ::=     ExprList:_1
                     {:
-                        System.out.println("OPT EXPR LIST NON EMPTY");
                         RESULT = _1;
                     :}
     |               /* empty */
                     {:
-                        System.out.println("OPT EXPR LIST -- EMPTY");
                     :}
     ;
 
