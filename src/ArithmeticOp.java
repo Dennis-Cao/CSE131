@@ -18,8 +18,15 @@ abstract class ArithmeticOp extends BinaryOp{
     }
 
     STO checkOperands(STO a, STO b) {
-        Type aType = a.getType();
-        Type bType = b.getType();
+        Type aType,bType;
+        if(a.isFunc())
+            aType = ((FuncSTO)a).getReturnType();
+        else
+            aType = a.getType();
+        if(b.isFunc())
+            bType = ((FuncSTO)b).getReturnType();
+        else
+            bType = b.getType();
         if (!(aType instanceof NumericType)){
             return new ErrorSTO("Arithmetic",aType, symbol);
         }

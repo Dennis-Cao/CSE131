@@ -6,8 +6,15 @@ public class EqualOp extends ComparisonOp{
         super(a,"==",b);
     }
     public STO checkOperands(STO a, STO b){
-    	Type aType = a.getType();
-        Type bType = b.getType();
+    	Type aType,bType;
+        if(a.isFunc())
+            aType = ((FuncSTO)a).getReturnType();
+        else
+            aType = a.getType();
+        if(b.isFunc())
+            bType = ((FuncSTO)b).getReturnType();
+        else
+            bType = b.getType();
         if (((aType instanceof NumericType) && (!(bType instanceof NumericType))) || ((aType instanceof BoolType) && (!(bType instanceof BoolType)))){
             return new ErrorSTO("Equality",aType.toString(),bType.toString(), symbol);
         }

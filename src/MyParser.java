@@ -360,6 +360,8 @@ class MyParser extends parser
 	//----------------------------------------------------------------
 	STO DoAssignExpr(STO stoDes, STO assignedValue)
 	{
+		if(stoDes instanceof ErrorSTO || assignedValue instanceof ErrorSTO)
+			return new ErrorSTO("err");
 		System.out.println("Set: " + stoDes.getName() + " to:" + assignedValue.getName());
 		if (!stoDes.isModLValue())
 		{
