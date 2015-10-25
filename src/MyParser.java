@@ -183,8 +183,6 @@ class MyParser extends parser
 			m_nNumErrors++;
 			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
 		}
-		System.out.print("id: " + " Type: " + typ);
-		System.out.println(id);
 		VarSTO sto = new VarSTO(id, typ);
 		m_symtab.insert(sto);
 	}
@@ -377,11 +375,11 @@ class MyParser extends parser
 				}
 				m_nNumErrors++;
 				if(stoDes.isFunc()){
-					m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),((FuncSTO)stoDes).getReturnType().toString()));
+					m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, ((FuncSTO)assignedValue).getReturnType().toString(),((FuncSTO)stoDes).getReturnType().toString()));
 					return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),((FuncSTO)stoDes).getReturnType().toString());
 				}
-				m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, assignedValue.getType().toString(),stoDes.getType().toString()));
-				return new ErrorSTO("error3b_Assign",assignedValue.getType().toString(),stoDes.getType().toString());
+				m_errors.print(Formatter.toString(ErrorMsg.error3b_Assign, ((FuncSTO)assignedValue).getReturnType().toString(),stoDes.getType().toString()));
+				return new ErrorSTO("error3b_Assign",((FuncSTO)assignedValue).getReturnType().toString(),stoDes.getType().toString());
 			}
 		}
 		else if(!assignedValue.getType().isAssignableTo(stoDes.getType())){
@@ -435,7 +433,11 @@ class MyParser extends parser
 			}
 			for(int i = 0; i < vec.size();i++){
 				if(funcParams.get(i).getName().startsWith("&")){
-					if(!vec.get(i).getType().isEquivalentTo(funcParams.get(i).getType())){
+					if(!vec.get(i).isModLValue()) {
+						m_nNumErrors++;
+						m_errors.print(Formatter.toString(ErrorMsg.error5c_Call,funcParams.get(i).getName(),vec.get(i).getType().toString()));
+					}
+					else if(!vec.get(i).getType().isEquivalentTo(funcParams.get(i).getType())){
 						m_nNumErrors++;
 						m_errors.print(Formatter.toString(ErrorMsg.error5r_Call, vec.get(i).getType().toString(),funcParams.get(i).getName(),funcParams.get(i).getType().toString()));
 					}
