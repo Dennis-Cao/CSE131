@@ -530,15 +530,18 @@ ParamList ::=       ParamDecl:_2
     ;
 
 
-ParamDecl ::=       Type:_3 OptRef T_ID:_2 OptArrayList:_1
+ParamDecl ::=       Type:_3 OptRef:_4 T_ID:_2 OptArrayList:_1
                     {:
-                        ((MyParser) parser).DoVarDecl(_2,_3);
-                        RESULT = ((MyParser) parser).DoDesignator3_ID2(_2);
+                        ((MyParser) parser).DoVarDecl(_4+_2,_3);
+                        RESULT = ((MyParser) parser).DoDesignator3_ID2(_4+_2);
                     :}
     ;
 
 
 OptRef ::=          T_AMPERSAND
+                    {:
+                        RESULT = "&";
+                    :}
     |               /* empty */
     ;
 

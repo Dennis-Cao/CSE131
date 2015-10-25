@@ -173,8 +173,6 @@ class MyParser extends parser
 			m_nNumErrors++;
 			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
 		}
-		System.out.print("id: ");
-		System.out.println(id);
 		VarSTO sto = new VarSTO(id);
 		m_symtab.insert(sto);
 	}
@@ -436,9 +434,19 @@ class MyParser extends parser
 				return new ErrorSTO(sto.getName());
 			}
 			for(int i = 0; i < vec.size();i++){
-				if(!vec.get(i).getType().isAssignableTo(funcParams.get(i).getType())){
+				if(funcParams.get(i).getName().startsWith("&")){
+					if(!vec.get(i).getType().isEquivalentTo(funcParams.get(i).getType())){
+						m_nNumErrors++;
+						m_errors.print(Formatter.toString(ErrorMsg.error5r_Call, vec.get(i).getType().toString(),funcParams.get(i).getName(),funcParams.get(i).getType().toString()));
+					}
+				}
+				else if(!vec.get(i).getType().isAssignableTo(funcParams.get(i).getType())){
+					m_nNumErrors++;
 					m_errors.print(Formatter.toString(ErrorMsg.error5a_Call, vec.get(i).getType().toString(),funcParams.get(i).getName(),funcParams.get(i).getType().toString()));
 				}
+			}
+			if(m_nNumErrors > 0){
+				return new ErrorSTO(sto.getName());
 			}
 		}
 		if (!sto.isFunc())
@@ -483,9 +491,6 @@ class MyParser extends parser
 			m_nNumErrors++;
 		 	m_errors.print(Formatter.toString(ErrorMsg.undeclared_id, strID));
 			sto = new ErrorSTO(strID);
-		}
-		else{
-			System.out.println("HELLO");
 		}
 
 		return sto;
