@@ -368,7 +368,7 @@ class MyParser extends parser
 				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");
             	return new ErrorSTO("NotAss");
 		}
-		if(((FuncSTO)assignedValue).isFunc())
+		if(assignedValue.isFunc())
 		{
 			if(!((FuncSTO)assignedValue).getReturnType().isAssignableTo(stoDes.getType()))
 			{
