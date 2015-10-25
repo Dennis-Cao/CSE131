@@ -75,6 +75,7 @@ abstract class Type
 	public boolean	isFloat()   { return false; }
 	public boolean	isBool()   	{ return false; }
 	public boolean  isNumeric() { return false; }
+	public boolean isVoid() { return false; }
 	public boolean	isAssignableTo(Type typ) {return false;}
 	public boolean  isEquivalentTo(Type typ)
 	{
