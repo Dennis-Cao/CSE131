@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/16/15.
- */
+
 public class NotEqualOp extends ComparisonOp{
     public NotEqualOp(STO a, STO b){
         super(a,"!=",b);

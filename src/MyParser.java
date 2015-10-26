@@ -216,17 +216,37 @@ class MyParser extends parser
 	//----------------------------------------------------------------
 	//
 	//----------------------------------------------------------------
-	void DoConstDecl(String id)
+	void DoConstDecl(String id,Type typ, Object value)
 	{
+		if(!((STO)value).getType().isAssignableTo(typ)){
+			m_nNumErrors++;
+			m_errors.print(Formatter.toString(ErrorMsg.error8_Assign, ((STO)value).getType().toString(),typ.toString())) ;
+		}
 		if (m_symtab.accessLocal(id) != null)
 		{
 			m_nNumErrors++;
 			m_errors.print(Formatter.toString(ErrorMsg.redeclared_id, id));
 		}
 		
-		ConstSTO sto = new ConstSTO(id, null, 0);   // fix me
+		ConstSTO sto = new ConstSTO(id, typ,0);   // fix me
 		m_symtab.insert(sto);
 	}
+	void DoConstDecl(String id, Object value)
+	{
+		// if(!value.getType().isAssignableTo(typ)){
+		// 	m_nNumErrors++;
+		// 	m_errors.print(Formatter.toString(ErrorMsg.error8_Assign, value.getType().toString()));
+		// }
+		if (m_symtab.accessLocal(id) != null)
+		{
+			m_nNumErrors++;
+			m_errors.print(Formatter.toString(ErrorMsg.error8_CompileTime, id));
+		}
+		
+		ConstSTO sto = new ConstSTO(id, ((STO)value).getType(),0);   // fix me
+		m_symtab.insert(sto);
+	}
+
 
 	//----------------------------------------------------------------
 	//
@@ -361,7 +381,6 @@ class MyParser extends parser
 	{
 		if(stoDes instanceof ErrorSTO || assignedValue instanceof ErrorSTO)
 			return new ErrorSTO("err");
-		System.out.println("Set: " + stoDes.getName() + " to:" + assignedValue.getName());
 		if (!stoDes.isModLValue())
 		{
 				m_errors.print("Left-hand operand is not assignable (not a modifiable L-value).");

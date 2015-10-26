@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/15/15.
- */
+
 abstract class BooleanOp extends BinaryOp{
     String symbol;
 

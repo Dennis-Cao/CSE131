@@ -253,12 +253,12 @@ VarDecl ::=         OptStatic:_1 DecoratedType:_2 T_ID:_3 OptArrayList:_4 OptIni
 
 ConstDecl ::=       OptStatic:_1 T_CONST BasicType:_2 T_ID:_3 T_ASSIGN ConstExpr:_5
                     {:
-                        ((MyParser) parser).DoConstDecl (_3);
+                        ((MyParser) parser).DoConstDecl (_3,_2,_5);
                     :}
                     T_SEMI
     |               OptStatic:_1 T_CONST T_AUTO T_ID:_3 T_ASSIGN ConstExpr:_5
                     {:
-                        ((MyParser) parser).DoConstDecl (_3);
+                        //((MyParser) parser).DoConstDecl (_3,_5);
                     :}
                     T_SEMI
     ;
@@ -509,8 +509,6 @@ Stmt ::=            VarDecl
 
 OptParamList ::=    ParamList:_1
                     {:
-                        System.out.print("paramList: ");
-                        System.out.println(_1);
                         RESULT=_1;
                     :}
     |               /* empty */
@@ -631,7 +629,10 @@ WritePair ::=       Expr
     ;
 
 
-ConstExpr ::=       Expr
+ConstExpr ::=       Expr:_1
+                    {:
+                        RESULT=_1;
+                    :}
     ;
 
 
@@ -670,7 +671,6 @@ Expr ::=            Designator:_1 T_ASSIGN Expr:_3
 
 Expr0 ::=           Expr0:_1 T_OR:_2 Expr1:_3
                     {:
-                        System.out.println("or");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"||",_3);
                     :}
     |               Expr1:_1
@@ -682,7 +682,6 @@ Expr0 ::=           Expr0:_1 T_OR:_2 Expr1:_3
 
 Expr1 ::=           Expr1:_1 T_AND:_2 Expr2:_3
                     {:
-                        System.out.println("and");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"&&",_3);
                     :}
     |               Expr2:_1
@@ -694,7 +693,6 @@ Expr1 ::=           Expr1:_1 T_AND:_2 Expr2:_3
 
 Expr2 ::=           Expr2:_1 T_BAR:_2 Expr3:_3
                     {:
-                        System.out.println("bar");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"|",_3);
                     :}
     |               Expr3:_1
@@ -706,7 +704,6 @@ Expr2 ::=           Expr2:_1 T_BAR:_2 Expr3:_3
 
 Expr3 ::=           Expr3:_1 T_CARET:_2 Expr4:_3
                     {:
-                        System.out.println("caret");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"^",_3);
                     :}
     |               Expr4:_1
@@ -718,8 +715,6 @@ Expr3 ::=           Expr3:_1 T_CARET:_2 Expr4:_3
 
 Expr4 ::=           Expr4:_1 T_AMPERSAND:_2 Expr5:_3
                     {:
-                        System.out.print("amp");
-                        System.out.println(_2);
                         RESULT = ((MyParser) parser).doBinaryOp (_1,"&",_3);
                     :}
     |               Expr5:_1
@@ -731,7 +726,6 @@ Expr4 ::=           Expr4:_1 T_AMPERSAND:_2 Expr5:_3
 
 Expr5 ::=           Expr5:_1 Equality:_2 Expr6:_3
                     {:
-                        System.out.println("equality");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2.toString(),_3);
                     :}
     |               Expr6:_1
@@ -743,7 +737,6 @@ Expr5 ::=           Expr5:_1 Equality:_2 Expr6:_3
 
 Expr6 ::=           Expr6:_1 Relation:_2 Expr7:_3
                     {:
-                        System.out.println("relation");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2.toString(),_3);
                     :}
     |               Expr7:_1
@@ -755,8 +748,6 @@ Expr6 ::=           Expr6:_1 Relation:_2 Expr7:_3
 
 Expr7 ::=           Expr7:_1 AddOp:_2 Expr8:_3
                     {:
-                        System.out.print("Addop: ");
-                        System.out.println(_2);
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2,_3);
                     :}
     |               Expr8:_1
@@ -768,7 +759,6 @@ Expr7 ::=           Expr7:_1 AddOp:_2 Expr8:_3
 
 Expr8 ::=           Expr8:_1 MulOp:_2 Designator:_3
                     {:
-                        System.out.println("mul");
                         RESULT = ((MyParser) parser).doBinaryOp (_1,_2,_3);
                     :}
     |               Designator:_1

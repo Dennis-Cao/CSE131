@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/15/15.
- */
+
 public class ModOp extends ArithmeticOp{
     public ModOp(STO a, STO b){
         super(a, "%", b);

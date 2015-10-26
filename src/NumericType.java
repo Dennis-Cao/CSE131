@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/15/15.
- */
+
 abstract class NumericType extends BasicType{
     public NumericType(){
     	super("Numeric", 4);

@@ -1,10 +1,8 @@
-/**
- * Created by austinsun on 10/15/15.
- */
+
 public class BoolType extends BasicType {
     public BoolType()
     {
-        super("Bool", 1);
+        super("bool", 1);
     }
 
     @Override

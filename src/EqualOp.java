@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/16/15.
- */
+
 public class EqualOp extends ComparisonOp{
     public EqualOp(STO a, STO b){
         super(a,"==",b);

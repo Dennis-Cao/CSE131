@@ -17,7 +17,7 @@ class ConstSTO extends STO
     //	Feel free to change this if you don't like it!
     //----------------------------------------------------------------
     private BigDecimal		m_value;
-
+    public boolean initialized = false;
 	//----------------------------------------------------------------
 	//
 	//----------------------------------------------------------------
@@ -45,6 +45,7 @@ class ConstSTO extends STO
 	{
 		super(strName, typ);
 		m_value = new BigDecimal(val);
+		initialized = true;
 		setIsModifiable(false);
 		setIsAddressable(false);
 		// You may want to change the isModifiable and isAddressable
@@ -55,6 +56,7 @@ class ConstSTO extends STO
 	{
 		super(strName, typ);
 		m_value = new BigDecimal(val);
+		initialized = true;
 		setIsModifiable(false);
 		setIsAddressable(false);
 		// You may want to change the isModifiable and isAddressable

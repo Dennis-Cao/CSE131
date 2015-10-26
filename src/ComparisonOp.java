@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/16/15.
- */
+
 abstract class ComparisonOp extends BinaryOp{
     String symbol;
 

@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/15/15.
- */
+
 abstract class BitwiseOp extends BinaryOp{
     String symbol;
     public BitwiseOp(STO a, String sym,STO b){

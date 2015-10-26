@@ -16,7 +16,7 @@ public class FloatType extends NumericType
 	//----------------------------------------------------------------
 	public FloatType()
 	{
-		super("Float");
+		super("float");
 	}
 
 

@@ -1,6 +1,4 @@
-/**
- * Created by austinsun on 10/12/15.
- */
+
 abstract class BinaryOp extends Operator{
     STO leftOp;
     STO rightOp;
